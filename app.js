@@ -13,6 +13,14 @@ const msgSchema = mongoose.Schema({
 
 const Content = mongoose.model('content', msgSchema);
 
+Content.find((err, contents) => {
+    if (err) return console.error(err);
+    for (i = 0; i < contents.length; i++) {
+        messages.push(contents[i])
+    };
+    console.log(`messages: ${messages}`);
+});
+
 // List of all messages
 let messages = [];
 
@@ -53,7 +61,7 @@ app.get("/messages", (request, response) => {
 
     // update the requesting user's last access time
     users[request.query.for] = now;
-
+    console.log(messages)
     // send the latest 40 messages and the full user list, annotated with active flags
     response.send({messages: messages.slice(-40), users: usersSimple})
 })
