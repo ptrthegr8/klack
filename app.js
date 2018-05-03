@@ -100,11 +100,7 @@ app.post("/messages", (request, response) => {
 })
 
 app.listen(PORT, () => {
-    mongoose.connect('mongodb://localhost/klack');
+    // mongoose.connect('mongodb://localhost/klack');
     mongoose.connect(`mongodb://${dbUser}:${dbPwd}@${URI}/${dbName}`)
     console.log(`http://localhost:${port}/`)
 });
-const dbName = "klack";
-const dbUser = "admin";
-const dbPwd = "admin";
-const URI = "ds037095.mlab.com:37095";
