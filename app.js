@@ -22,7 +22,6 @@ Content.find((err, contents) => {
     for (i = 0; i < contents.length; i++) {
         messages.push(contents[i])
     };
-    console.log(`messages: ${messages}`);
 });
 
 // List of all messages
@@ -84,7 +83,6 @@ app.post("/messages", (request, response) => {
     
     // Send back the successful response.
     response.status(201)
-    console.log(request.body)
     // NEW CODE
     const instance = new Content({
         sender: request.body.sender,
@@ -101,4 +99,5 @@ app.post("/messages", (request, response) => {
 app.listen(PORT, () => {
     // mongoose.connect('mongodb://localhost/klack');
     mongoose.connect(`mongodb://${dbUser}:${dbPwd}@${URI}/${dbName}`)
+    console.log(`link to site: https://klack.herokuapp.com/`)
 });
